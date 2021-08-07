@@ -43,12 +43,18 @@ namespace ATM_Portal
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            value = textBoxValue.Text;
-            if (type == DEPOSIT) AccountManage.userInfo.Balance += double.Parse(value);
-            else if (type == WITHDRAW) AccountManage.userInfo.Balance -= double.Parse(value);
-            else if (type == CHANGE_NAME) AccountManage.userInfo.Name = value;
-            else if (type == CHANGE_PASSWORD) AccountManage.userInfo.Password = value;
-            Hide();
+            try
+            {
+                value = textBoxValue.Text;
+                if (type == DEPOSIT) AccountManage.userInfo.Balance += double.Parse(value);
+                else if (type == WITHDRAW) AccountManage.userInfo.Balance -= double.Parse(value);
+                else if (type == CHANGE_NAME) AccountManage.userInfo.Name = value;
+                else if (type == CHANGE_PASSWORD) AccountManage.userInfo.Password = value;
+                Hide();
+            } catch
+            {
+                MessageBox.Show("Please enter a number!");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

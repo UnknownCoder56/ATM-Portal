@@ -40,9 +40,15 @@ namespace ATM_Portal
                 {
                     MessageBox.Show("Wrong Password!");
                 }
-            } catch
+            } catch(FileNotFoundException)
             {
                 MessageBox.Show("Account does not exist!");
+            } catch(DirectoryNotFoundException)
+            {
+                MessageBox.Show("No account has been created till now!");
+            } catch(Exception x)
+            {
+                MessageBox.Show("Error: " + x.Message + "\nSource: " + x.Source + "\nPlease report this to the developer!");
             }
         }
     }
